@@ -1,0 +1,24 @@
+
+.row{
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.row h1{
+    margin-bottom: 5px;
+}
+.card{
+    display: flex;
+    overflow-x: scroll;
+}
+.card-img{
+    height: 250px;
+    transition: .4s ease-in-out;
+    margin-right: 10px;
+}
+.card-img:hover{
+    transform: scale(1.05);
+}
+
+.card::-webkit-scrollbar{
+    display: none;
+}
