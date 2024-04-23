@@ -1,10 +1,14 @@
 import React from 'react'
 import Card from '../components/Cards/Card'
 import requests from '../RequestApis/request'
+import Banner from '../components/Banner/Banner'
+import Navbar from '../components/Navbar/Navbar'
 
 function Home() {
   return (
     <div>
+      <Navbar/>
+      <Banner fetchUrl={requests.fetchTrending}/>
         <Card change={true} title={'Trending'} fetchUrl={requests.fetchTrending}/>
         <Card title={'Originals'} fetchUrl={requests.fetchNetflixOriginals}/>
         <Card title={'Top Rated'} fetchUrl={requests.fetchTopRated}/>

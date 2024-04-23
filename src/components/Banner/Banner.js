@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Banner.css'
-function Banner() {
+import instance from '../../RequestApis/baseUrl'
+const base_url = "https://image.tmdb.org/t/p/original/";
+function Banner({fetchUrl}) {
+
+  const [trend, setTrend] = useState([])
+  const fetchTrend=async()=>{
+    const data= await instance.get(fetchUrl)
+    setTrend(data.data.results[Math.floor(Math.random()*data.data.results.length)]);
+  }
+useEffect(() => {
+  fetchTrend()
+}, [])
+
   return (
-    <div className='banner'>
+    <div className='banner' style={{backgroundImage:`url(${base_url}${trend.backdrop_path})`}}>
         <div className='content'>
-            <h1>Titlee</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus fuga, vel sit consequuntur quam dicta, necessitatibus provident in alias aspernatur magnam, est repellat dolores iusto maiores sunt? Enim, quos saepe.</p>
+            <h1>{trend.title?trend.title:trend.name}</h1>
+            <p>{trend.overview}</p>
         </div>
     </div>
   )

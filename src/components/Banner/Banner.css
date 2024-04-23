@@ -1,13 +1,18 @@
 .banner{
     height: 600px;
-    background-color: rgb(168, 217, 217);
+    background-size: cover;
 }
 
 .content{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     justify-content: center;
     height: 600px;
     padding-left:10px ;
+    margin-left: 20px;
+}
+
+.content p{
+    margin-top: 10px;
 }
