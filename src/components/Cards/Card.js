@@ -16,7 +16,7 @@ const base_url = "https://image.tmdb.org/t/p/original/";
   console.log(movies);
   // console.log(text.movies);
   return (
-    <div className='row'>
+    <div className='rows'>
         
           <h1>{title}</h1>
             <div className='card'>

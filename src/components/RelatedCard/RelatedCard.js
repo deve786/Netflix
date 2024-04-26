@@ -37,7 +37,7 @@ function RelatedCard() {
             {related ? (
                 related.map(movie => (
                     <Link to={`/movie/${movie.id}`}>
-                        <div key={movie.id} className='card'>  
+                        <div key={movie.id} className='cards'>  
                             <div className='related-image'>
                                 <img src={`${base_url}${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} alt={movie.title} />
                             </div>

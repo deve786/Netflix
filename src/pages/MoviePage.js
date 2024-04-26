@@ -137,7 +137,7 @@ function MoviePage() {
 
       <div className='related'>
         <h3>Realted Movies</h3>
-        <div className='row'>
+        <div className='rows'>
           <RelatedCard />
 
 
