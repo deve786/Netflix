@@ -7,7 +7,7 @@ function ReviewCard() {
 
   const [review, setReview] = useState([])
   const params = useParams()
-  const [daysUntilEvent, setDaysUntilEvent] = useState('');
+  
 
   const options = {
     method: 'GET',

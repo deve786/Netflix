@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import Trailer from '../components/Trailer/Trailer';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
 import Navbar from '../components/Navbar/Navbar'
+import MoreDetails from '../components/MoreDetails/MoreDetails'
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function MoviePage() {
@@ -31,7 +32,7 @@ function MoviePage() {
     const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options)
 
     setSingleMovie(data.data)
-    console.log(singleMovie);
+    
 
 
   }
@@ -110,7 +111,7 @@ function MoviePage() {
               <TabList className={'tabList'}>
                 <Tab className={'tab'}>Overview</Tab>
                 <Tab className={'tab'} >Trailer & More</Tab>
-                <Tab className={'tab'}>More Like this</Tab>
+                <Tab className={'tab'}>More About</Tab>
                 <Tab className={'tab'}>Review</Tab>
               </TabList>
 
@@ -129,7 +130,7 @@ function MoviePage() {
                 <Trailer />
               </TabPanel>
               <TabPanel>
-                <h2>Any content 3</h2>
+                <MoreDetails/>
               </TabPanel>
               <TabPanel>
                 {/* <div className='reviewCardMain'> */}

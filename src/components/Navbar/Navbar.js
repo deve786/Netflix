@@ -15,7 +15,7 @@ function Navbar() {
    })
   }, [])
   
-console.log(show);
+
   return (
     <div className={`navbar ${show && 'nav'}`}>
         <div className='logo'>

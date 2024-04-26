@@ -1,0 +1,27 @@
+.more_details {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main_details p img {
+    width: 30px;
+}
+
+.imgs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+@media (max-width:700px) {
+    .more_details{
+        width: 100%;
+    }
+}
