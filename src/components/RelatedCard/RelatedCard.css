@@ -1,0 +1,19 @@
+
+
+.card {
+    
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    color: azure;
+}
+
+.related-image img {
+    height: 250px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.related-image {
+    object-fit: cover;
+}

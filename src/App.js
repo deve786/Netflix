@@ -1,15 +1,18 @@
 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Banner from './components/Banner/Banner';
-import Card from './components/Cards/Card';
-import Navbar from './components/Navbar/Navbar';
+
 import Home from './pages/Home';
+import MoviePage from './pages/MoviePage';
 
 function App() {
   return (
     <div className="App">
-      
-     <Home/>
+      <Routes>
+        <Route path={'/'} element={<Home/>}></Route>
+        <Route path={'/movie/:id'} element={<MoviePage/>}></Route>
+      </Routes>
+     
     </div>
   );
 }

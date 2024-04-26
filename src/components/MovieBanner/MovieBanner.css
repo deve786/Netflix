@@ -1,0 +1,154 @@
+.movie-banner {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    
+}
+
+.banner-left {
+    width: 50%;
+
+}
+
+.banner-left img {
+    width: 90%;
+    height: 100%;
+
+}
+
+.banner-right {
+    width: 50%;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title h2 {
+    font-size: 3rem;
+    text-align: left;
+
+}
+
+.sub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sub-title {
+    text-align: left;
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    color: rgb(164, 162, 162);
+}
+
+.tabs {
+    margin-top: 20px;
+
+}
+
+.tab {
+    position: static;
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-variant-caps: small-caps !important;
+    outline: none;
+}
+
+.react-tabs__tab--selected {
+    background-color: transparent !important;
+    color: white !important;
+    font-variant-caps: small-caps !important;
+    border: 0 !important;
+    border-bottom: 2px solid red !important;
+}
+
+.tabList {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #aaa;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.overviewpanel {
+    width: 80%;
+    margin-top: 20px;
+    line-height: 25px;
+}
+
+.panel-detail {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.panel-movie-detail {
+    margin-top: 20px;
+}
+
+
+.related {
+    padding: 5px;
+    padding-bottom: 30px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media (max-width:780px) {
+    .movie-banner {
+        
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .banner-left {
+        width: 80%;
+    }
+
+    .banner-right {
+        width: 80%;
+    }
+
+    .title h2 {
+        font-size: 1.5rem;
+    }
+
+    .tab {
+        font-weight: 100;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+    .overviewpanel {
+        width: 100%;
+        
+    }    
+    .panel-movie-detail {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+    }
+    .name{
+        margin-left: 100px;
+    }
+    .row{
+        justify-content: center;
+    }
+}

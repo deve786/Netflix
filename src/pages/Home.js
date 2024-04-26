@@ -9,9 +9,9 @@ function Home() {
     <div>
       <Navbar/>
       <Banner fetchUrl={requests.fetchTrending}/>
-        <Card change={true} title={'Trending'} fetchUrl={requests.fetchTrending}/>
+        <Card text={console.log()} change={true} title={'Trending'} fetchUrl={requests.fetchTrending}/>
         <Card title={'Originals'} fetchUrl={requests.fetchNetflixOriginals}/>
-        <Card title={'Top Rated'} fetchUrl={requests.fetchTopRated}/>
+        <Card  title={'Top Rated'} fetchUrl={requests.fetchTopRated}/>
         <Card title={'Action'} fetchUrl={requests.fetchActionMovies}/>
         <Card title={'Comedy'} fetchUrl={requests.fetchComedyMovies}/>
         <Card title={'Horror'} fetchUrl={requests.fetchHorrorMovies}/>

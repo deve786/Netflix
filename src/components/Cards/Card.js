@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Card.css'
 import instance from '../../RequestApis/baseUrl'
-function Card({fetchUrl,title,change}) {
+import { Link } from 'react-router-dom';
+function Card({fetchUrl,title,change,text}) {
 const [movies, setMovies] = useState([])
 const base_url = "https://image.tmdb.org/t/p/original/";
   const fetchMovies=async()=>{
@@ -13,6 +14,7 @@ const base_url = "https://image.tmdb.org/t/p/original/";
     fetchMovies()
   }, [])
   console.log(movies);
+  // console.log(text.movies);
   return (
     <div className='row'>
         
@@ -22,7 +24,7 @@ const base_url = "https://image.tmdb.org/t/p/original/";
                 movies.length>0?
                 (
                   movies.map(i=>(
-                    <img className='card-img' src={`${base_url}${change?i.poster_path:i.backdrop_path}`} alt="" />
+                   <Link to={`/movie/${i.id}`}> <img className='card-img' src={`${base_url}${change?i.poster_path:i.backdrop_path}`} alt="" /></Link>
                   ))
                 )
                 :
