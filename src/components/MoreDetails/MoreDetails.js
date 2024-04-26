@@ -19,13 +19,13 @@ function MoreDetails() {
         const data = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}?language=en-US`, options)
 
         setMore(data.data)
-
+        
 
     }
     const watchProFetch = async () => {
         const data = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/watch/providers`, options)
         setWatch(data.data.results.CA.buy)
-        
+        console.log(data.data);
 
 
     }
@@ -49,7 +49,7 @@ function MoreDetails() {
     return (
         <div>
             {
-               more && watch?
+               more && watch.length>0 ?
                     <div className='more_details'>
                         <div className='main_details'>
                             <p className=''>Watch Providers:</p>
@@ -72,7 +72,7 @@ function MoreDetails() {
                             <p className='imgs'> $ {more.revenue?more.revenue:'Not Found'}</p>
                         </div>
                     </div>
-                :<></>
+                :<>asd</>
             }
         </div>
     )
