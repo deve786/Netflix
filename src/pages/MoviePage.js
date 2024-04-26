@@ -7,6 +7,7 @@ import RelatedCard from '../components/RelatedCard/RelatedCard';
 import '../components/RelatedCard/RelatedCard.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Trailer from '../components/Trailer/Trailer';
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function MoviePage() {
@@ -120,7 +121,7 @@ function MoviePage() {
                 </div>
               </TabPanel>
               <TabPanel>
-                <h2>Any content 2</h2>
+                <Trailer/>
               </TabPanel>
               <TabPanel>
                 <h2>Any content 3</h2>
