@@ -8,6 +8,8 @@ import '../components/RelatedCard/RelatedCard.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Trailer from '../components/Trailer/Trailer';
+import ReviewCard from '../components/ReviewCard/ReviewCard';
+import Navbar from '../components/Navbar/Navbar'
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function MoviePage() {
@@ -29,6 +31,7 @@ function MoviePage() {
     const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options)
 
     setSingleMovie(data.data)
+    console.log(singleMovie);
 
 
   }
@@ -77,6 +80,7 @@ function MoviePage() {
     movieFetch()
     castFetch()
   }, [params.id])
+  
   return (
 
 
@@ -84,6 +88,7 @@ function MoviePage() {
 
 
     <>
+    <Navbar/>
       <div className='movie-banner'>
 
         <div className='banner-left'>
@@ -106,7 +111,7 @@ function MoviePage() {
                 <Tab className={'tab'}>Overview</Tab>
                 <Tab className={'tab'} >Trailer & More</Tab>
                 <Tab className={'tab'}>More Like this</Tab>
-                <Tab className={'tab'}>Details</Tab>
+                <Tab className={'tab'}>Review</Tab>
               </TabList>
 
               <TabPanel>
@@ -121,13 +126,15 @@ function MoviePage() {
                 </div>
               </TabPanel>
               <TabPanel>
-                <Trailer/>
+                <Trailer />
               </TabPanel>
               <TabPanel>
                 <h2>Any content 3</h2>
               </TabPanel>
               <TabPanel>
-                <h2>Any content 4</h2>
+                {/* <div className='reviewCardMain'> */}
+                  <ReviewCard />
+                {/* </div> */}
               </TabPanel>
             </Tabs>
           </div>

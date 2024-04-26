@@ -1,18 +1,18 @@
 .movie-banner {
-    margin-top: 20px;
+
     padding: 20px;
     display: flex;
-    
+
 }
 
 .banner-left {
     width: 50%;
-
+    height: 80vh;
 }
 
 .banner-left img {
     width: 90%;
-    height: 100%;
+    height: 80vh;
 
 }
 
@@ -112,7 +112,7 @@
 
 @media (max-width:780px) {
     .movie-banner {
-        
+
         align-items: center;
         flex-direction: column;
         justify-content: center;
@@ -135,20 +135,34 @@
         font-size: 11px;
         letter-spacing: 1px;
     }
+
     .overviewpanel {
         width: 100%;
-        
-    }    
+
+    }
+
     .panel-movie-detail {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        
+
     }
-    .name{
+
+    .name {
         margin-left: 100px;
     }
-    .row{
+
+    .row {
         justify-content: center;
+    }
+
+    .banner-left img {
+
+        height: 50vh;
+    }
+
+    .banner-left     {
+
+        height: 50vh;
     }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 function Navbar() {
   const [show, setShow] = useState(false)
 
@@ -18,7 +19,7 @@ console.log(show);
   return (
     <div className={`navbar ${show && 'nav'}`}>
         <div className='logo'>
-          <img src="/netflix-logo.png" alt="" />
+          <Link to={'/'}><img src="/netflix-logo.png" alt="" /></Link>
           </div>
         
     </div>

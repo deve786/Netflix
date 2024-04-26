@@ -18,9 +18,9 @@ function Trailer() {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/videos`, options);
             if (response.data.results.length > 0) {
-                setTrailer(response.data.results[0]); // Store the first trailer directly
+                setTrailer(response.data.results[0]); 
             } else {
-                setTrailer(null); // No trailers found
+                setTrailer(null); 
             }
         } catch (error) {
             console.error('Error fetching related movies:', error);
@@ -39,7 +39,7 @@ function Trailer() {
     <div>
         {
             trailer?
-            <iframe width="100%" height="514" src={link1} title="Deadpool &amp; Wolverine | Official Trailer | Experience It In IMAX®" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>:
+            <iframe width="100%"  style={{height:'55vh'}} src={link1} title="Deadpool &amp; Wolverine | Official Trailer | Experience It In IMAX®" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>:
             <></>
         }
             

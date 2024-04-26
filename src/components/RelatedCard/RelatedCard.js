@@ -17,7 +17,7 @@ function RelatedCard() {
 
     const relatedFetch = async () => {
         try {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/similar?language=en-US`, options);
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/recommendations`, options);
             setRelated(response.data.results.slice(0, 7));  
         } catch (error) {
             console.error('Error fetching related movies:', error);
@@ -36,8 +36,8 @@ function RelatedCard() {
         <>
             {related ? (
                 related.map(movie => (
-                    <Link  to={`/movie/${movie.id}`} style={{textDecoration:"none"}}>
-                        <div key={movie.id} className='cards'>  
+                    <Link key={movie.id} to={`/movie/${movie.id}`} style={{textDecoration:"none"}}>
+                        <div  className='cards'>  
                             <div className='related-image'>
                                 <img src={`${base_url}${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`} alt={movie.title} />
                             </div>
