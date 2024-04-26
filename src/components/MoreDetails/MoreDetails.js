@@ -5,7 +5,7 @@ import axios from 'axios';
 const base_url = "https://image.tmdb.org/t/p/original/";
 function MoreDetails() {
     const [more, setMore] = useState(null)
-    const [watch, setWatch] = useState(null)
+    const [watch, setWatch] = useState([])
     const params = useParams()
     const options = {
         method: 'GET',
@@ -19,28 +19,28 @@ function MoreDetails() {
         const data = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}?language=en-US`, options)
 
         setMore(data.data)
-        
+
 
     }
     const watchProFetch = async () => {
         const data = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/watch/providers`, options)
-        setWatch(data.data.results.CA.buy)
-        console.log(data.data);
+        setWatch(data.data.results.CA)
+        console.log(data);
 
 
     }
-    const watchList=watch?watch.slice(0,1):''
-    // console.log(watchList[0].provider_name);
+    const watchList = watch ? watch : ''
+    const logo = watchList.buy?watchList.buy[0].logo_path:'';
+    const name = watchList.buy?watchList.buy[0].provider_name:'';
+    // const avatar = more && more.production_companies ? 
+    //     more.production_companies.map(company => company.logo_path).join(', ') : '';
+    //     const list1=avatar.split(",").slice(0,1);
+    // console.log(list1);
+    // const productionList = more && more.production_companies ? 
+    //     more.production_companies.map(company => company.name).join(', ') : '';
+    //     const list=productionList.split(",").slice(0,1);
 
-    const avatar = more && more.production_companies ? 
-        more.production_companies.map(company => company.logo_path).join(', ') : '';
-        const list1=avatar.split(",").slice(0,1);
-        // console.log(list1);
-    const productionList = more && more.production_companies ? 
-        more.production_companies.map(company => company.name).join(', ') : '';
-        const list=productionList.split(",").slice(0,1);
 
-        
     useEffect(() => {
         moreFetch()
         watchProFetch()
@@ -49,15 +49,18 @@ function MoreDetails() {
     return (
         <div>
             {
-               more && watch.length>0 ?
+                more  ? (
                     <div className='more_details'>
                         <div className='main_details'>
                             <p className=''>Watch Providers:</p>
-                            <p className='imgs'><img src={`${base_url}${watchList[0].logo_path}`} /> {watchList[0].provider_name}</p>
+                            {
+                                watchList ? (
+                                    <p className='imgs'><img className='prod_logo' src={`${base_url}${logo?logo:''}`} /> {name}</p>
+                                ) : <p>No providers found</p>}
                         </div>
                         <div className='main_details'>
                             <p className=''>Production:</p>
-                            <p className='imgs'><img src={`${base_url}${list1}`}/> {list || 'No production companies listed'}</p>
+                            <p className='imgs'><img src={`${base_url}${more.production_companies[0]?.logo_path}`} /> {more.production_companies[0]?.name || 'No production companies listed'}</p>
                         </div>
                         <div className='main_details'>
                             <p className=''>Release Date:</p>
@@ -69,10 +72,10 @@ function MoreDetails() {
                         </div>
                         <div className='main_details'>
                             <p className=''>Collection</p>
-                            <p className='imgs'> $ {more.revenue?more.revenue:'Not Found'}</p>
+                            <p className='imgs'> $ {more.revenue ? more.revenue : 'Not Found'}</p>
                         </div>
-                    </div>
-                :<>asd</>
+                    </div>)
+                    : <>No Data Found</>
             }
         </div>
     )

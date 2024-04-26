@@ -14,6 +14,9 @@
 .main_details p img {
     width: 30px;
 }
+.prod_logo{
+    width: 30px;
+}
 
 .imgs {
     display: flex;
