@@ -40,7 +40,7 @@ function MoviePage() {
   }
 
   const genres = singleMovie.genres && singleMovie.genres.length > 0 ? singleMovie.genres[0].name : 'N/A';
-  console.log(genres)
+
 
 
   const year = singleMovie.release_date

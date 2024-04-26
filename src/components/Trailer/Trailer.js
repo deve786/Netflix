@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 function Trailer() {
-    const [trailer, setTrailer] = useState([])
+    const [trailer, setTrailer] = useState(null)
     const params = useParams()
     const options = {
         method: 'GET',
@@ -17,18 +17,23 @@ function Trailer() {
     const trailerFetch = async () => {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/videos`, options);
-            setTrailer(response.data.results);  
+            if (response.data.results.length > 0) {
+                setTrailer(response.data.results[0]); // Store the first trailer directly
+            } else {
+                setTrailer(null); // No trailers found
+            }
         } catch (error) {
             console.error('Error fetching related movies:', error);
+            setTrailer(null);
         }
     };
 
     useEffect(() => {
       trailerFetch()
     }, [params.id])
-    console.log(trailer[0].key);
+    console.log(trailer);
     
-    const link1 = trailer ? `https://www.youtube.com/embed/${trailer[0].key}` : 'No trailer available';
+    const link1 = trailer ? `https://www.youtube.com/embed/${trailer.key}` : 'No trailer available';
     console.log(link1);
   return (
     <div>
