@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar/Navbar'
 function Home() {
   return (
     <div>
-      <Navbar/>
+      
       <Banner fetchUrl={requests.fetchTrending}/>
         <Card text={console.log()} change={true} title={'Trending'} fetchUrl={requests.fetchTrending}/>
         <Card title={'Originals'} fetchUrl={requests.fetchNetflixOriginals}/>
