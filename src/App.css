@@ -1,3 +1,9 @@
 .app{
     width: 100%;
 }
+.no-movie{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

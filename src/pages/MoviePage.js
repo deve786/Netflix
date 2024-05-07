@@ -29,18 +29,22 @@ function MoviePage() {
 
 
   const movieFetch = async () => {
-    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options)
+    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options).catch(result=>{
+      console.log("failed");
+    })
 
-    setSingleMovie(data.data)
-    
+    setSingleMovie(data?data.data:"")
+
 
 
   }
-
+  console.log(singleMovie);
   const castFetch = async () => {
-    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}/credits?language=en-US`, options)
+    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}/credits?language=en-US`, options).catch(result=>{
+      console.log("failed");
+    })
 
-    setCast(data.data.cast)
+    setCast(data?data.data.cast:'')
   }
 
   const genres = singleMovie.genres && singleMovie.genres.length > 0 ? singleMovie.genres[0].name : 'N/A';
@@ -81,7 +85,7 @@ function MoviePage() {
     movieFetch()
     castFetch()
   }, [params.id])
-  
+console.log(singleMovie.length);
   return (
 
 
@@ -89,69 +93,71 @@ function MoviePage() {
 
 
     <>
-    <Navbar/>
-      <div className='movie-banner'>
-
-        <div className='banner-left'>
-          <img src={`${base_url}${singleMovie.backdrop_path}`} alt="" />
-        </div>
-
-        <div className='banner-right'>
-          <div>
-            <div className='title'>
-              <h2>{singleMovie.original_title}</h2>
-              <p>{singleMovie.vote_average} ⭐</p>
-            </div>
-            <div className='sub'><p className='sub-title'><span>{year}</span>|<span>{time.hours}h {time.minutes}min</span>|<span>{singleMovie.adult == 'true' ? '18+' : '16+'}</span></p>
-              <></>
-            </div>
+      <Navbar />
+      { singleMovie?<>
+        <div className='movie-banner'>
+  
+          <div className='banner-left'>
+            <img src={`${base_url}${singleMovie.backdrop_path}`} alt="" />
           </div>
-          <div>
-            <Tabs className={'tabs'}>
-              <TabList className={'tabList'}>
-                <Tab className={'tab'}>Overview</Tab>
-                <Tab className={'tab'} >Trailer & More</Tab>
-                <Tab className={'tab'}>More About</Tab>
-                <Tab className={'tab'}>Review</Tab>
-              </TabList>
-
-              <TabPanel>
-                <div className='overviewpanel'>
-                  <p>{singleMovie.overview}</p>
-                  <p className='panel-movie-detail'>
-                    <div className='panel-detail'><span>Starring</span> <span className='name'> {castName}</span></div>
-                    <div className='panel-detail'><span>Created By</span> <span className='name'>{writers[0] ? writers[0] : 'Not Found'}</span></div>
-                    <div className='panel-detail'><span>Genre</span> <span className='name'>{genres}</span></div>
-                  </p>
-
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <Trailer />
-              </TabPanel>
-              <TabPanel>
-                <MoreDetails/>
-              </TabPanel>
-              <TabPanel>
-                {/* <div className='reviewCardMain'> */}
+  
+          <div className='banner-right'>
+            <div>
+              <div className='title'>
+                <h2>{singleMovie.original_title}</h2>
+                <p>{singleMovie.vote_average} ⭐</p>
+              </div>
+              <div className='sub'><p className='sub-title'><span>{year}</span>|<span>{time.hours}h {time.minutes}min</span>|<span>{singleMovie.adult == 'true' ? '18+' : '16+'}</span></p>
+                <></>
+              </div>
+            </div>
+            <div>
+              <Tabs className={'tabs'}>
+                <TabList className={'tabList'}>
+                  <Tab className={'tab'}>Overview</Tab>
+                  <Tab className={'tab'} >Trailer & More</Tab>
+                  <Tab className={'tab'}>More About</Tab>
+                  <Tab className={'tab'}>Review</Tab>
+                </TabList>
+  
+                <TabPanel>
+                  <div className='overviewpanel'>
+                    <p>{singleMovie.overview}</p>
+                    <p className='panel-movie-detail'>
+                      <div className='panel-detail'><span>Starring</span> <span className='name'> {castName}</span></div>
+                      <div className='panel-detail'><span>Created By</span> <span className='name'>{writers[0] ? writers[0] : 'Not Found'}</span></div>
+                      <div className='panel-detail'><span>Genre</span> <span className='name'>{genres}</span></div>
+                    </p>
+  
+                  </div>
+                </TabPanel>
+                <TabPanel>
+                  <Trailer />
+                </TabPanel>
+                <TabPanel>
+                  <MoreDetails />
+                </TabPanel>
+                <TabPanel>
+                  {/* <div className='reviewCardMain'> */}
                   <ReviewCard />
-                {/* </div> */}
-              </TabPanel>
-            </Tabs>
+                  {/* </div> */}
+                </TabPanel>
+              </Tabs>
+            </div>
+          </div>
+  
+        </div>
+  
+  
+        <div className='related'>
+          <h3>Realted Movies</h3>
+          <div className='rows'>
+            <RelatedCard />
+  
+  
           </div>
         </div>
-
-      </div>
-
-
-      <div className='related'>
-        <h3>Realted Movies</h3>
-        <div className='rows'>
-          <RelatedCard />
-
-
-        </div>
-      </div>
+      </>:<div className='no-movie'><h1>No details about this Movie</h1></div>}
 
 
 

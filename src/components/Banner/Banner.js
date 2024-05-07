@@ -17,7 +17,7 @@ useEffect(() => {
     <div className='banner' style={{backgroundImage:`url(${base_url}${trend.backdrop_path})`}}>
         <div className='content'>
             <h1>{trend.title?trend.title:trend.name}</h1>
-            <p>{trend.overview}</p>
+            <p>{trend.overview ? trend.overview.slice(0, 200) + (trend.overview.length > 200 ? "..." : ""): "No description available."}</p>
         </div>
     </div>
   )
