@@ -3,6 +3,7 @@ import Card from '../components/Cards/Card'
 import requests from '../RequestApis/request'
 import Banner from '../components/Banner/Banner'
 import Navbar from '../components/Navbar/Navbar'
+import Footer from '../components/Footer/Footer'
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
         <Card title={'Horror'} fetchUrl={requests.fetchHorrorMovies}/>
         <Card title={'Romance '} fetchUrl={requests.fetchRomanceMovies}/>
         <Card title={'Documentary'} fetchUrl={requests.fetchDocumentaries}/>
+        <Footer></Footer>
     </div>
   )
 }
