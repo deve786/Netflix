@@ -17,3 +17,14 @@
 .related-image {
     object-fit: cover;
 }
+.related_movies_row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 10px;
+}
+@media (max-width:400px) {
+    .related_movies_row{
+        justify-content: center;
+    }
+}

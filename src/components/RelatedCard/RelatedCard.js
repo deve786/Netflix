@@ -33,7 +33,7 @@ function RelatedCard() {
    
 
     return (
-        <>
+        <div className='related_movies_row'>
             {related ? (
                 related.map(movie => (
                     <Link key={movie.id} to={`/movie/${movie.id}`} style={{textDecoration:"none"}}>
@@ -50,7 +50,7 @@ function RelatedCard() {
             ) : (
                 <p>Loading related movies...</p>  
             )}
-        </>
+        </div>
     );
     
 }

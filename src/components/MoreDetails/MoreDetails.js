@@ -46,6 +46,7 @@ function MoreDetails() {
         watchProFetch()
     }, [params.id])
     // console.log(more?more:'');  
+    console.log(name);
     return (
         <div>
             {
@@ -55,7 +56,7 @@ function MoreDetails() {
                             <p className=''>Watch Providers:</p>
                             {
                                 watchList ? (
-                                    <p className='imgs'><img className='prod_logo' src={`${base_url}${logo?logo:''}`} /> {name}</p>
+                                    <p className='imgs'><img className='prod_logo' src={logo ? `${base_url}${logo}` : ""} /> {name?name:'No Providers'}</p>
                                 ) : <p>No providers found</p>}
                         </div>
                         <div className='main_details'>
