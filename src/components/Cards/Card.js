@@ -6,14 +6,16 @@ function Card({fetchUrl,title,change,text}) {
 const [movies, setMovies] = useState([])
 const base_url = "https://image.tmdb.org/t/p/original/";
   const fetchMovies=async()=>{
-    const out=await instance.get(fetchUrl)
+    const out=await instance.get(fetchUrl).catch(error => {
+      console.error("Error during API call:", error);
+  });
     setMovies(out.data.results);
   }
 
   useEffect(() => {
     fetchMovies()
   }, [])
-  console.log(movies);
+  // console.log(movies);
   // console.log(text.movies);
   return (
     <div className='rows'>

@@ -29,9 +29,22 @@ function MoviePage() {
 
 
   const movieFetch = async () => {
-    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options).catch(result=>{
-      console.log("failed");
-    })
+    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options).catch(error => {
+      if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error("Response error:", error.response.data);
+          console.error("Status:", error.response.status);
+          console.error("Headers:", error.response.headers);
+      } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+      } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error("Error:", error.message);
+      }
+      console.error("Config:", error.config);
+  });
 
     setSingleMovie(data?data.data:"")
 
@@ -40,16 +53,30 @@ function MoviePage() {
   }
   console.log(singleMovie);
   const castFetch = async () => {
-    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}/credits?language=en-US`, options).catch(result=>{
-      console.log("failed");
-    })
+    const data = await axios.get(`https://api.themoviedb.org/3/movie/${ids}/credits?language=en-US`, options).catch(error => {
+      if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error("Response error:", error.response.data);
+          console.error("Status:", error.response.status);
+          console.error("Headers:", error.response.headers);
+      } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+      } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error("Error:", error.message);
+      }
+      console.error("Config:", error.config);
+  });
+   
 
     setCast(data?data.data.cast:'')
   }
 
   const genres = singleMovie.genres && singleMovie.genres.length > 0 ? singleMovie.genres[0].name : 'N/A';
 
-
+console.log(singleMovie);
 
   const year = singleMovie.release_date
     ? singleMovie.release_date.slice(0, 4) : 'N/A'
@@ -78,14 +105,16 @@ function MoviePage() {
     return writers;
   }
   const writers = getWriters(cast);
-
+  const imageUrl = singleMovie.backdrop_path ? 
+  `${base_url}${singleMovie.backdrop_path}` : 
+  `${base_url}${singleMovie.poster_path}`;
 
 
   useEffect(() => {
     movieFetch()
     castFetch()
   }, [params.id])
-console.log(singleMovie.length);
+console.log(imageUrl);
   return (
 
 
@@ -98,7 +127,7 @@ console.log(singleMovie.length);
         <div className='movie-banner'>
   
           <div className='banner-left'>
-            <img src={`${base_url}${singleMovie.backdrop_path}`} alt="" />
+            <img src={imageUrl} alt="" />
           </div>
   
           <div className='banner-right'>
